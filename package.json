@@ -1,0 +1,17 @@
+{
+  "name": "self-directed-ai",
+  "module": "index.ts",
+  "type": "module",
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.24.3",
+    "@langchain/langgraph": "^0.0.31",
+    "mobx": "^6.13.1",
+    "openai": "^4.53.2"
+  }
+}

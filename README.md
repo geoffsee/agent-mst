@@ -17,15 +17,15 @@ graph TD
    GR -->|No| TR
    GR -->|Yes| END[End]
 
-   style CSM fill:#f9f,stroke:#333,stroke-width:4px
-   style IS fill:#cff,stroke:#333,stroke-width:2px
-   style CS fill:#cff,stroke:#333,stroke-width:2px
-   style VS fill:#cff,stroke:#333,stroke-width:2px
-   style TR fill:#ff9,stroke:#333,stroke-width:2px
-   style API fill:#ff9,stroke:#333,stroke-width:2px
-   style NS fill:#ff9,stroke:#333,stroke-width:2px
-   style GR fill:#ff9,stroke:#333,stroke-width:2px
-   style END fill:#cff,stroke:#333,stroke-width:2px
+   style CSM fill:#000000,stroke:#FFFFFF,stroke-width:4px
+   style IS fill:#222222,stroke:#FFFFFF,stroke-width:2px
+   style CS fill:#222222,stroke:#FFFFFF,stroke-width:2px
+   style VS fill:#222222,stroke:#FFFFFF,stroke-width:2px
+   style TR fill:#333333,stroke:#FFFFFF,stroke-width:2px
+   style API fill:#333333,stroke:#FFFFFF,stroke-width:2px
+   style NS fill:#333333,stroke:#FFFFFF,stroke-width:2px
+   style GR fill:#333333,stroke:#FFFFFF,stroke-width:2px
+   style END fill:#222222,stroke:#FFFFFF,stroke-width:2px
 ```
 
 > ### Clarke's three laws

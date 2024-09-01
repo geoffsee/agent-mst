@@ -2,6 +2,32 @@
 
 agent state machines for primates 
 
+
+```mermaid
+graph TD
+   CSM[ClaudeStateMachine] -->|Initialize| IS[Initial State]
+   CSM -->|Manage| CS[Current State]
+   CSM -->|Track| VS[Visited States]
+   CSM --> TR[Transition]
+   TR -->|Use| API[Claude API]
+   API -->|Suggest| NS[Next State]
+   NS --> TR
+   TR -->|Update| CS
+   CS -->|Check| GR[Goal Reached?]
+   GR -->|No| TR
+   GR -->|Yes| END[End]
+
+   style CSM fill:#f9f,stroke:#333,stroke-width:4px
+   style IS fill:#cff,stroke:#333,stroke-width:2px
+   style CS fill:#cff,stroke:#333,stroke-width:2px
+   style VS fill:#cff,stroke:#333,stroke-width:2px
+   style TR fill:#ff9,stroke:#333,stroke-width:2px
+   style API fill:#ff9,stroke:#333,stroke-width:2px
+   style NS fill:#ff9,stroke:#333,stroke-width:2px
+   style GR fill:#ff9,stroke:#333,stroke-width:2px
+   style END fill:#cff,stroke:#333,stroke-width:2px
+```
+
 > ### Clarke's three laws
 > 1. When a distinguished but elderly scientist states that something is possible, he is almost certainly right. When he states that something is impossible, he is very probably wrong.
 > 2. The only way of discovering the limits of the possible is to venture a little way past them into the impossible.

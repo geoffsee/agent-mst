@@ -2,6 +2,11 @@
 
 Agent state machines for primates
 
+### Quickstart
+```shell
+npm install agent-mst
+```
+
 ```mermaid
 graph TD
    CSM[ClaudeStateMachine] -->|Initialize| IS[Initial State]

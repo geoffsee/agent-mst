@@ -1,6 +1,6 @@
-import {ClaudeStateMachine} from "./claude-state-machine.ts";
-import {getNextState} from "./state-handlers.ts";
-
+import { ClaudeStateMachine } from './claude-state-machine';
+import { getNextState } from './state-handlers';
+import { StateMachineConfig } from './types';
 
 export function createStateMachine(type: string): ClaudeStateMachine {
     switch (type) {
@@ -14,7 +14,6 @@ export function createStateMachine(type: string): ClaudeStateMachine {
                     {
                         condition: (machine) => machine.state === "Troubleshooting" && !machine.getData("issueIdentified"),
                         action: (machine) => {
-                            console.log("Identifying the specific issue...");
                             machine.setData("issueIdentified", true);
                         },
                         description: "Identify the specific issue during troubleshooting"
@@ -22,35 +21,24 @@ export function createStateMachine(type: string): ClaudeStateMachine {
                     {
                         condition: (machine) => machine.state === "Escalation" && !machine.getData("escalationReason"),
                         action: (machine) => {
-                            console.log("Documenting reason for escalation...");
                             machine.setData("escalationReason", "Complex technical issue beyond initial support scope");
                         },
                         description: "Document the reason for escalation"
                     }
                 ]
             });
-
-        // Add other state machine types here...
-
+        // Add more cases as needed
         default:
             throw new Error(`Unknown state machine type: ${type}`);
     }
 }
 
 export async function runStateMachine(machine: ClaudeStateMachine) {
-    console.log("Starting state machine...");
-    console.log(`Initial state: ${machine.state}`);
-
     while (!machine.goalReached()) {
         await new Promise(resolve => setTimeout(resolve, 1000));
         const nextState = await getNextState(machine);
         machine.transition(nextState);
-        console.log(`Transitioned to state ${machine.state}`);
     }
-
-    console.log("Goal reached. Exiting state machine...");
-    console.log("Final state:", machine.state);
-    console.log("Visited states:", Array.from(machine.visitedStates).join(", "));
-    console.log("Final data:", JSON.stringify(machine.data));
 }
 
+export { ClaudeStateMachine, StateMachineConfig, getNextState };

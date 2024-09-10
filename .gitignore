@@ -9,7 +9,8 @@ yarn-debug.log*
 yarn-error.log*
 lerna-debug.log*
 .pnpm-debug.log*
-
+/prompt.js
+prompt.md
 # Caches
 
 .cache

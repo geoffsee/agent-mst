@@ -2,6 +2,9 @@
   "name": "self-directed-ai",
   "module": "index.ts",
   "type": "module",
+  "scripts": {
+    "dev": "bun main.ts"
+  },
   "devDependencies": {
     "@types/bun": "latest"
   },

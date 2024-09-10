@@ -61,10 +61,10 @@ agent-mst creates state machines for various scenarios (customer support, softwa
 
 3. **Execution Flow**:
    - The main loop in `runStateMachine` (src/index.ts) continuously:
-     a. Asks Claude for the next state
-     b. Transitions to that state
-     c. Executes any relevant instructions
-     d. Checks if the goal has been reached
+     - a. Asks Claude for the next state
+     - b. Transitions to that state
+     - c. Executes any relevant instructions
+     - d. Checks if the goal has been reached
 
 4. **Instruction Execution**:
    - After each state transition, the system checks for applicable instructions

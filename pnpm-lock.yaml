@@ -11,6 +11,9 @@ dependencies:
   '@langchain/langgraph':
     specifier: ^0.0.31
     version: 0.0.31(openai@4.58.2)
+  agent-mst:
+    specifier: ^0.0.3
+    version: 0.0.3(typescript@5.6.2)(zod@3.23.8)
   esbuild:
     specifier: ^0.23.1
     version: 0.23.1
@@ -20,6 +23,12 @@ dependencies:
   openai:
     specifier: ^4.53.2
     version: 4.58.2(zod@3.23.8)
+  tslog:
+    specifier: ^4.9.3
+    version: 4.9.3
+  typescript:
+    specifier: ^5.0.0
+    version: 5.6.2
 
 devDependencies:
   '@types/bun':
@@ -344,6 +353,24 @@ packages:
     engines: {node: '>=6.5'}
     dependencies:
       event-target-shim: 5.0.1
+    dev: false
+
+  /agent-mst@0.0.3(typescript@5.6.2)(zod@3.23.8):
+    resolution: {integrity: sha512-Z++tnaqNPFBjhcudR1EYJvMCsc3NtnrEKTNwWlymnustPexKUkGYQZQnqOLTEjkIIK4E7F6VDaIzmJrpiFmpnQ==}
+    peerDependencies:
+      typescript: ^5.0.0
+    dependencies:
+      '@anthropic-ai/sdk': 0.24.3
+      '@langchain/langgraph': 0.0.31(openai@4.58.2)
+      esbuild: 0.23.1
+      mobx: 6.13.2
+      openai: 4.58.2(zod@3.23.8)
+      typescript: 5.6.2
+    transitivePeerDependencies:
+      - better-sqlite3
+      - encoding
+      - langchain
+      - zod
     dev: false
 
   /agentkeepalive@4.5.0:
@@ -714,6 +741,17 @@ packages:
 
   /tr46@0.0.3:
     resolution: {integrity: sha512-N3WMsuqV66lT30CrXNbEjx4GEwlow3v6rr4mCcv6prnfwhS01rkgyFdjPNBYd9br7LpXV1+Emh01fHnq2Gdgrw==}
+    dev: false
+
+  /tslog@4.9.3:
+    resolution: {integrity: sha512-oDWuGVONxhVEBtschLf2cs/Jy8i7h1T+CpdkTNWQgdAF7DhRo2G8vMCgILKe7ojdEkLhICWgI1LYSSKaJsRgcw==}
+    engines: {node: '>=16'}
+    dev: false
+
+  /typescript@5.6.2:
+    resolution: {integrity: sha512-NW8ByodCSNCwZeghjN3o+JX5OFH0Ojg6sadjEKY4huZ52TqbJTJnDo5+Tw98lSy63NZvi4n+ez5m2u5d4PkZyw==}
+    engines: {node: '>=14.17'}
+    hasBin: true
     dev: false
 
   /undici-types@5.26.5:

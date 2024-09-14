@@ -73,11 +73,50 @@ export function createProblemSolvingStateMachine(): ClaudeStateMachine {
                 }
                 const plan = await queryAI(`Based on this analysis: ${analysis}, formulate a step-by-step plan to solve the problem: ${problemState.problemDescription}`);
                 console.log('Generated plan:', plan);
-                if (plan) {
-                    problemState.currentPlan = plan.split('\n').filter(step => step.trim() !== '');
+
+                if (typeof plan === 'string' && plan.trim() !== '') {
+                    // Split the plan into lines
+                    const lines = plan.split('\n').map(line => line.trim()).filter(line => line !== '');
+
+                    // Find the index of the header (if it exists)
+                    const headerIndex = lines.findIndex(line => line.startsWith("Step-by-step plan"));
+
+                    // Separate header and body
+                    let header = '';
+                    let bodyLines = lines;
+                    if (headerIndex !== -1) {
+                        header = lines[headerIndex];
+                        bodyLines = lines.slice(headerIndex + 1);
+                    }
+
+                    // Regular expression to match numbered items, alphabetic subitems, and bulleted items
+                    const stepPattern = /(?:^\s*(?:(\d+)\.|\(([a-z])\)|\-|\*)\s*(.+))/;
+
+                    const parsedSteps = bodyLines.map(line => {
+                        const match = line.match(stepPattern);
+                        if (match) {
+                            const [, number, letter, content] = match;
+                            if (number) {
+                                return { type: 'main', number: parseInt(number), content: content.trim() };
+                            } else if (letter) {
+                                return { type: 'sub', letter, content: content.trim() };
+                            } else {
+                                return { type: 'bullet', content: content.trim() };
+                            }
+                        } else {
+                            return { type: 'unknown', content: line.trim() };
+                        }
+                    });
+
+                    problemState.currentPlan = {
+                        header: header,
+                        steps: parsedSteps
+                    };
+
                     machine.setData("problemState", problemState);
+                    console.log('Parsed plan:', problemState.currentPlan);
                 } else {
-                    console.error('Plan is undefined');
+                    console.error('Plan is empty or invalid');
                 }
             },
             description: "Formulate a plan to solve the problem"

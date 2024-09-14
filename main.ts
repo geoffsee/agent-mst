@@ -1,12 +1,9 @@
-import {createStateMachine, runStateMachine} from "./src";
+import {createStateMachine, runStateMachine} from "./src/agent-state-machine.ts";
 
+// Main function
 async function main() {
-    const types = ["customerSupport"];
-    for (const type of types) {
-        console.log(`\nRunning ${type} state machine:`);
-        const machine = createStateMachine(type);
-        await runStateMachine(machine);
-    }
+    const problemSolvingAgent = createStateMachine("problemSolving");
+    await runStateMachine(problemSolvingAgent, "Develop a strategy to reduce carbon emissions in a major city");
 }
 
 main().catch(console.error);

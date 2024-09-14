@@ -1,6 +1,8 @@
 # agent-mst
 
-Agent state machines for primates
+> Agent state machines for primates
+
+## Status: 
 
 ### Quickstart
 ```shell
@@ -89,21 +91,21 @@ Example:
 
 ```typescript
 case "newScenario":
-return new ClaudeStateMachine({
-   initialState: "Start",
-   possibleStates: ["Start", "Middle", "End"],
-   goalPredicate: (visitedStates) => visitedStates.has("End"),
-   contextPrompt: "Description of the new scenario...",
-   instructions: [
-      {
-         condition: (machine) => machine.state === "Middle",
-         action: (machine) => {
-            machine.setData("middleReached", true);
-         },
-         description: "Mark when the middle state is reached"
-      }
-   ]
-});
+    return new ClaudeStateMachine({
+       initialState: "Start",
+       possibleStates: ["Start", "Middle", "End"],
+       goalPredicate: (visitedStates) => visitedStates.has("End"),
+       contextPrompt: "Description of the new scenario...",
+       instructions: [
+          {
+             condition: (machine) => machine.state === "Middle",
+             action: (machine) => {
+                machine.setData("middleReached", true);
+             },
+             description: "Mark when the middle state is reached"
+          }
+       ]
+    });
 ```
 
 ## Project Structure

@@ -5,7 +5,9 @@
   "type": "module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "description": "Declarative AI agents with Mobx",
   "scripts": {
     "dev": "bun main.ts",
@@ -20,9 +22,11 @@
   "dependencies": {
     "@anthropic-ai/sdk": "^0.24.3",
     "@langchain/langgraph": "^0.0.31",
+    "agent-mst": "^0.0.3",
     "esbuild": "^0.23.1",
     "mobx": "^6.13.1",
-    "openai": "^4.53.2"
+    "openai": "^4.53.2",
+    "tslog": "^4.9.3"
   },
   "license": "MIT",
   "author": "Geoff Seemueller"

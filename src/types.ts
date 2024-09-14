@@ -15,3 +15,10 @@ export interface StateMachineConfig {
 }
 
 export type State = string;
+
+export interface ProblemState {
+    problemDescription: string;
+    currentPlan: string[];
+    executionResults: string[];
+    learnings: string[];
+}
